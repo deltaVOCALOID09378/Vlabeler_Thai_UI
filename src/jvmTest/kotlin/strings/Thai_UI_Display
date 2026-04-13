@@ -1,0 +1,26 @@
+package strings
+
+import com.sdercolin.vlabeler.ui.string.Language
+import com.sdercolin.vlabeler.ui.string.Strings
+import com.sdercolin.vlabeler.ui.string.stringCertain
+import kotlin.test.Test
+
+/**
+ * ชุดการทดสอบสำหรับการทำงานของฟังก์ชัน [stringCertain]
+ */
+class StringFormatTest {
+
+    // กำหนดจำนวนพารามิเตอร์สูงสุดที่ใช้ในการทดสอบ
+    private val maxParamCount = 5
+
+    @Test
+    fun test() {
+        // ดำเนินการวนซ้ำเพื่อทดสอบในทุกภาษาที่ระบบรองรับ
+        Language.entries.forEach { language ->
+            // ดำเนินการวนซ้ำเพื่อตรวจสอบชุดคีย์ข้อความทั้งหมด
+            Strings.entries.forEach { key ->
+                stringCertain(key, language, *Array(maxParamCount) { it })
+            }
+        }
+    }
+}
